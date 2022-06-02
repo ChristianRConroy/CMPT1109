@@ -6,24 +6,9 @@ using namespace std;
 
 
 
-//*******************************************************************************
-
-int menu() { //this function asks you which shape you'd like to draw
 
 
 
-	cout << "please enter which shape you would like drawn" << endl;
-	cout << "1) for triangle" << endl;
-	cout << "2) for diamond" << endl;
-	cout << "3) for neither" << endl;
-
-	int choice;
-
-	cin >> choice;
-
-	return choice;
-
-}
 
 //*******************************************************************************
 //this function retrieves the size of the rows you'd like in your triangle/diamond
@@ -45,7 +30,7 @@ int get_size() {
 
 char get_char() { 
 
-	cout << "please enter your desired character, this character will be what the triangle consists of" << endl;
+	cout << "please enter your desired character, this character will be what the shape will consists of" << endl;
 
 	char symbol;
 
@@ -121,6 +106,28 @@ void draw_diamond(int rows, char x)
 
 }
 
+
+//*******************************************************************************
+//this function asks you which shape you'd like to draw
+
+int menu() { 
+
+
+
+	cout << "please enter which shape you would like drawn" << endl;
+	cout << "1) for triangle" << endl;
+	cout << "2) for diamond" << endl;
+	cout << "3) for neither" << endl;
+
+	int choice;
+
+	cin >> choice;
+
+	return choice;
+
+}
+
+
 //*******************************************************************************
 //this function draws the shape based on which you picked
 
@@ -150,9 +157,7 @@ void draw_shape(int choice)
 
 int main() {
 
-	
-draw_shape(menu());
-
+	draw_shape(menu());
 
 	return 0;
 
