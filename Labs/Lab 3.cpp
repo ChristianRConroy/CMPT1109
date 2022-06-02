@@ -4,7 +4,7 @@ using namespace std;
 
 int menu() {
 
-	//draw_triangle(get_size(), get_char());
+
 
 	cout << "please enter which shape you would like drawn" << endl;
 	cout << "1) for triangle" << endl;
@@ -19,13 +19,30 @@ int menu() {
 
 }
 
+
 void draw_shape(int choice)
 {
 
+    switch (choice) {
 
 
+	case 1:
+        draw_triangle(get_size(),get_char());
+
+		break;
+	case 2:
+        draw_diamond(get_size(),get_char());
+		break;
+	
+	default:
+		cout <<"thank you, goodbye" << endl;
+
+	}
+
+    
 
 }
+
 
 int get_size() {
 
@@ -51,6 +68,9 @@ char get_char() {
 
 
 }
+
+
+
 
 void draw_triangle(int rows, char x)
 
@@ -112,7 +132,6 @@ int main() {
 
 	
 
-draw_diamond(get_size(), get_char());
 
 
 	return 0;
