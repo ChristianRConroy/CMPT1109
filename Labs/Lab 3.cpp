@@ -5,7 +5,24 @@ using namespace std;
 
 
 
+//*******************************************************************************
+//instructions
 
+void instructions() {
+
+cout << "Hello and welcome to shape maker program" << endl;
+cout << "you will be asked which shape you'd like, or if you" << endl;
+cout << "dont want to build a shape at all" << endl;
+cout << "" << endl;
+cout << "you'll then be asked about which character you'd like your shape" << endl;
+cout << "to be of" << endl;
+cout << "finally, you'll be asked how many rows that you'd like" << endl;
+cout << "" << endl;
+cout << "thank you" << endl;
+cout << "" << endl;
+cout << "" << endl;
+
+}
 
 
 
@@ -157,6 +174,8 @@ void draw_shape(int choice)
 
 int main() {
 
+
+    instructions();
 	draw_shape(menu());
 
 	return 0;
