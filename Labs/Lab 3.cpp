@@ -2,7 +2,13 @@
 
 using namespace std;
 
-int menu() {
+
+
+
+
+//*******************************************************************************
+
+int menu() { //this function asks you which shape you'd like to draw
 
 
 
@@ -11,7 +17,7 @@ int menu() {
 	cout << "2) for diamond" << endl;
 	cout << "3) for neither" << endl;
 
-	int choice = 0;
+	int choice;
 
 	cin >> choice;
 
@@ -19,32 +25,10 @@ int menu() {
 
 }
 
+//*******************************************************************************
+//this function retrieves the size of the rows you'd like in your triangle/diamond
 
-void draw_shape(int choice)
-{
-
-    switch (choice) {
-
-
-	case 1:
-        draw_triangle(get_size(),get_char());
-
-		break;
-	case 2:
-        draw_diamond(get_size(),get_char());
-		break;
-	
-	default:
-		cout <<"thank you, goodbye" << endl;
-
-	}
-
-    
-
-}
-
-
-int get_size() {
+int get_size() { 
 
 	cout << "please enter your desired number of rows" << endl;
 	int size;
@@ -56,7 +40,10 @@ int get_size() {
 
 }
 
-char get_char() {
+//*******************************************************************************
+//this function asks which character you'd like your shapes to be made of
+
+char get_char() { 
 
 	cout << "please enter your desired character, this character will be what the triangle consists of" << endl;
 
@@ -70,9 +57,10 @@ char get_char() {
 }
 
 
+//*******************************************************************************
+//for the triangle
 
-
-void draw_triangle(int rows, char x)
+void draw_triangle(int rows, char x) 
 
 {
 	//for the triangle
@@ -93,12 +81,14 @@ void draw_triangle(int rows, char x)
 	}
 }
 
+//*******************************************************************************
+//for the bottom of the triangle
 
-void draw_bottomTri(int rows, char x)
+void draw_bottomTri(int rows, char x) 
 {
 
 
-	//for the diamond
+	//for the diamond (old comment)
 	for (int i = 1; i <= rows; i++) //only controls rows
 	{
 		for (int v = 1; v <= i; v++) //determines how many times blanks are printed
@@ -116,7 +106,10 @@ void draw_bottomTri(int rows, char x)
 	}
 }
 
-void draw_diamond(int rows, char x)
+//*******************************************************************************
+//uses both top and botton of triangle to create diamond
+
+void draw_diamond(int rows, char x) 
 {
 
 	//for the triangle
@@ -128,10 +121,37 @@ void draw_diamond(int rows, char x)
 
 }
 
+//*******************************************************************************
+//this function draws the shape based on which you picked
+
+void draw_shape(int choice) 
+{
+
+    switch (choice) {
+
+	case 1:
+        draw_triangle(get_size(),get_char());
+		break;
+	case 2:
+        draw_diamond(get_size(),get_char());
+		break;
+	
+	default:
+		cout <<"thank you, goodbye" << endl;
+
+	}
+
+    
+
+}
+
+//************************************************************************************************
+//int main
+
 int main() {
 
 	
-
+draw_shape(menu());
 
 
 	return 0;
