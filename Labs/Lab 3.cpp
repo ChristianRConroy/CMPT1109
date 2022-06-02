@@ -112,6 +112,7 @@ int main() {
 
 	
 
+draw_diamond(get_size(), get_char());
 
 
 	return 0;
@@ -120,17 +121,4 @@ int main() {
 	
 	
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
 
