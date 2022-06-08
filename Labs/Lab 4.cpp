@@ -3,53 +3,45 @@
 using namespace std;
 
 
-int is_leap(int year){
+void is_leap(int year){
 
 int rem;
 
 int rem2;
 
+int rem3;
+
 rem = year % 4;
 
-rem2 = year % 400;
+rem2 = year % 100;
 
-if(rem == 0 || rem2 == 0)
+rem3 = year % 400;
+
+if(rem == 0)
 {
- return 0;
+    
+ if(rem2 == 0)
+ {
+     if(rem3 ==0)
+     {
+        cout << "leap year" << endl;
+     }
+     else
+        cout <<"not a leap year" << endl;
+ }
+ else
+    cout <<"leap year"<< endl;
 }
+else
+    cout <<"common year" << endl;
+
 
 }
-
 
 int main(){
 
-int year;
+is_leap(2000);
 
-int janFirst;
+return 0;
 
-
-cout << "please enter your calender year" << endl;
-cin >> year;
-
-cout << "please enter which day the first of january falls on" << endl;
-cin >> janFirst;
-
-//if february is leapyear, 29 days
-string months[12] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-
-for (int i = 0; i < 12; i++){
-
-}
-
-
-
-
-
-
-
-
-
-
-
-    return 0;
 }
