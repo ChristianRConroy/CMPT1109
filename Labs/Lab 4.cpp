@@ -2,6 +2,11 @@
 
 using namespace std;
 
+//lab 4 is simplified version of lab 5, both will be due last week
+//lab 5 will be full implementation while lab 4 will be just printing one month
+//jan to on sunday is lab 4
+
+
 
 bool is_leap(int year){
 
@@ -81,6 +86,7 @@ for (int i = 0; i < ROWS; i++) //for rows
 
 
 int counter = 1;
+
 //to print the thing
 for (int i = 0; i < ROWS; i++) //for rows
 {
