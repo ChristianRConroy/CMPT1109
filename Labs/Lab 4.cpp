@@ -18,24 +18,20 @@ if(rem == 0)
  {
      if(rem3 ==0)
      {
-        cout << "leap year" << endl;
         return true;
      }
      else
         {
-        cout <<"not a leap year" << endl;
         return false;
         }
  }
  else
     {
-    cout <<"leap year"<< endl;
     return true;
     }
 }
 else
     {
-    cout <<"common year" << endl;
     return false;
     }
 
@@ -44,7 +40,7 @@ else
 
 int main(){
 
-is_leap(2003);
+is_leap(1900);
 
 return 0;
 
