@@ -2,6 +2,25 @@
 
 using namespace std;
 
+
+int is_leap(int year){
+
+int rem;
+
+int rem2;
+
+rem = year % 4;
+
+rem2 = year % 400;
+
+if(rem == 0 || rem2 == 0)
+{
+ return 0;
+}
+
+}
+
+
 int main(){
 
 int year;
@@ -20,11 +39,9 @@ string months[12] = {"January", "February", "March", "April", "May", "June", "Ju
 
 for (int i = 0; i < 12; i++){
 
-
-
-
-
 }
+
+
 
 
 
