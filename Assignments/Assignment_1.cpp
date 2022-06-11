@@ -9,9 +9,9 @@ int j = 0;
 
 int sum = 0;
 
-for(int i = 0; i < size; i++) //runs as many times as the size of the array
+for(int i = 0; i < (size - 1); i++) //runs as many times as the size of the array
 {
-    if(j < size) //makes sure it doesnt add more numbers than are elements of the array
+    if(j < (size - 1)) //makes sure it doesnt add more numbers than are elements of the array
     {
         sum += arr[j]; //adds elements
         j = j + 2;     //ensures only "odd" elements are added
@@ -27,19 +27,18 @@ return sum; //returns the sum
 
 int addEvens(int arr[], int size){
 
-int j = 0;
+int j = 1;
 
 int sum = 0;
 
-for(int i = 0; i < size; i++) //runs as many times as the size of the array
+for(int i = 0; i < (size - 1); i++) //runs as many times as the size of the array
 {
-    if(j <= size) //makes sure it doesnt add more numbers than are elements of the array
+    if(j < size -1) //makes sure it doesnt add more numbers than are elements of the array
     {
-        cout << arr[j+1] << endl;
-        //sum += arr[j+1]; //adds elements
+        sum += arr[j]; //adds elements
         j = j + 2;     //ensures only "even" elements are added
         
-       // cout << sum << endl;
+       
 
         
     }
@@ -55,9 +54,9 @@ return sum; //returns the sum
 int main(){
 
 
-const int CODE = 11;
-//                   0  1  2  3  4  5  6  7  8  9  10
-int barCode[CODE] = {2, 3, 1, 3, 9, 0, 8, 5, 3, 7, 7};
+const int CODE = 12;
+//                   0  1  2  3  4  5  6  7  8  9  10 11
+int barCode[CODE] = {2, 3, 1, 3, 9, 0, 8, 5, 3, 7, 7, 9};
 
 
 //addOdds(barCode, CODE);
