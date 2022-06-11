@@ -65,6 +65,7 @@ int prodCodeType() {
                 return 0;
                 }
     }
+
 }
 
 //adds odd elements of array together
@@ -174,8 +175,21 @@ cout << "----------------" << endl;
 
 
 
+int n = prodCodeType();
 
-cout << prodCodeType();
+//int barCode[n];
+
+cout << "please enter first " << n << "-1 digits of your product code" << endl;
+
+for (int i = 0; i < (n-1); i++ )
+    {
+        //cin >> 
+
+;
+
+    }
+
+
 
 
 //cout << endl;
