@@ -17,8 +17,7 @@ for(int i = 0; i < (size - 1); i++) //runs as many times as the size of the arra
     }
 }
 
-sum = sum * 3; //this multiplies the ans by 3
-cout << sum << endl; //just for testing right now
+    sum = sum * 3; //this multiplies the ans by 3
 
 return sum; //returns the sum
 
@@ -39,8 +38,6 @@ for(int i = 0; i < (size - 1); i++) //runs as many times as the size of the arra
         j = j + 2;     //ensures only "even" elements are added  
     }
 }
-
-cout << sum << endl; //just for testing right now
 
 return sum; //returns the sum
 
@@ -80,7 +77,19 @@ return ans;
 
 }
 
+void displayBarCode(int arr[], int size)
+{
 
+for(int i = 0; i < (size - 1); i++) //should print out array except for last digit
+{
+
+cout << arr[i];
+
+}
+
+cout << findCheck(arr, size); //prints out last digits
+
+}
 
 
 int main(){
@@ -95,9 +104,10 @@ int barCode[CODE] = {2, 3, 1, 3, 9, 0, 8, 5, 3, 7, 7, 9};
 //cout << "evens" << endl;
 //addEvens(barCode, CODE);
 //cout << "both added" << endl;
-addEvens_Odds(barCode, CODE);
+//addEvens_Odds(barCode, CODE);
+//cout << findCheck(barCode, CODE) << endl;
 
-
+//displayBarCode(barCode, CODE);
 
 //int numbers;
 
