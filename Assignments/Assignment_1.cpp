@@ -51,6 +51,23 @@ return sum; //returns the sum
 
 }
 
+
+int addEvens_Odds(int arr[], int size)
+{
+
+int sum = 0;
+
+sum = addEvens(arr,size) + addOdds(arr, size);
+
+sum = sum * 3;
+
+cout << sum << endl;
+
+return sum;
+
+}
+
+
 int main(){
 
 
@@ -58,9 +75,13 @@ const int CODE = 12;
 //                   0  1  2  3  4  5  6  7  8  9  10 11
 int barCode[CODE] = {2, 3, 1, 3, 9, 0, 8, 5, 3, 7, 7, 9};
 
-
-//addOdds(barCode, CODE);
+cout << "odds" << endl;
+addOdds(barCode, CODE);
+cout << "evens" << endl;
 addEvens(barCode, CODE);
+cout << "both added" << endl;
+addEvens_Odds(barCode, CODE);
+
 
 
 //int numbers;
