@@ -152,15 +152,21 @@ int findCheck(int arr[], int size)
 void displayBarCode(int arr[], int size)
 {
 
+    cout << "----------------" << endl;
+    cout << "the check digit is ";
+    cout << findCheck(arr, size);
+    cout << "." << endl;
+
+    cout << "the product code is "; 
     for(int i = 0; i < (size - 1); i++) //should print out array except for last digit
     {
 
     cout << arr[i];
 
     }
-
+    
     cout << findCheck(arr, size); //prints out last digits
-
+    cout << "." << endl;
 }
 
 
@@ -169,7 +175,6 @@ void displayBarCode(int arr[], int size)
 int main(){
 
 //initialising some vars
-int codeArr[n];
 int transfer;
 string entryBarCode;
 
@@ -178,6 +183,9 @@ mainMenu();
 
 //asks for which type of code and returns array size
 const int n = prodCodeType();
+
+//initialising array
+int codeArr[n];
 
 //cleans out the int array
 for(int i = 0; i < n; i++) 
@@ -197,12 +205,12 @@ for(int i = 0; i < n; i++){
 
     }
 
-//testing for now
+//lets see
 
-for(int i = 0; i < n; i++) {
 
-    cout << codeArr[i];
+displayBarCode(codeArr, n);
 
-    }
+
+
 }
 
