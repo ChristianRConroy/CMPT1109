@@ -170,25 +170,30 @@ void displayBarCode(int arr[], int size)
 }
 
 
-
-
 int main(){
 
 //initialising some vars
-int transfer;
+int transfer, barCodeLength;
 string entryBarCode;
+
 
 //calls the menu
 mainMenu();
 
 //asks for which type of code and returns array size
-const int n = prodCodeType();
+const int sizeArr = prodCodeType();
+
+//makes it so that if product code 1-5 is not chosen, makes the whole program return 0
+if(sizeArr == 0)
+{
+    return 0;
+}
 
 //initialising array
-int codeArr[n];
+int codeArr[sizeArr];
 
 //cleans out the int array
-for(int i = 0; i < n; i++) 
+for(int i = 0; i < sizeArr; i++) 
     {
     codeArr[i] = 0;
     }
@@ -196,8 +201,19 @@ for(int i = 0; i < n; i++)
 //collects the string
 cin >> entryBarCode;
 
+//gives us the length of the barcode, for error checking reasons
+barCodeLength = entryBarCode.length();
+
+//makes sure the string size is correct
+if(barCodeLength != (sizeArr - 1))
+    {
+        cout << "you should have entered " << (sizeArr - 1); 
+        cout << " digits, but you entered " << barCodeLength << " digits";
+        return 0;
+    }
+
 //changes the string into an integer array
-for(int i = 0; i < n; i++){
+for(int i = 0; i < sizeArr; i++){
 
     transfer = entryBarCode[i] - '0'; //converts the string (ie a char array to from char type to int)
 
@@ -205,10 +221,8 @@ for(int i = 0; i < n; i++){
 
     }
 
-//lets see
 
-
-displayBarCode(codeArr, n);
+displayBarCode(codeArr, sizeArr);
 
 
 
