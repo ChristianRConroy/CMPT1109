@@ -16,7 +16,7 @@ void mainMenu(){
 }
 
 //will effectively return the size of the array we will be using
-int prodCodeType() {
+ const int prodCodeType() {
 
     int productType, size = 0;
 
@@ -159,103 +159,46 @@ void displayBarCode(int arr[], int size)
 }
 
 
-
-
-
 int main(){
 
 
+mainMenu();
+
+const int n = prodCodeType();
+
+int barCode[n];
+
+for(int i = 0; i < n; i++) {
+
+barCode[i] = 0;
+
+}
+
+int transfer;
+
+string barc;
+
+cin >> barc;
+
+for(int i = 0; i < n; i++){
+
+transfer = barc[i] - '0';
+
+barCode[i] = transfer;
+
+}
 
 
-cout << "check digit calculator" << endl;
-cout << "----------------" << endl;
-cout << "1. EAN-8" << endl;
-cout << "2. UPC-A" << endl;
-cout << "3. EAN-13" << endl;
-cout << "4. EAN-14" << endl;
-cout << "5. SSCC" << endl;
-cout << "----------------" << endl;
-
-
-
-int n = prodCodeType();
-
-
-int barCode[n] = {0};
-
-for (int i = 0; i < (n - 1); i++)
+for (int i = 0; i < n; i++)
 {
 
-    cin >> barCode[i];
+    cout << barCode[i];
 
 }
 
 
-void collectStr(){
 
 
-
-
-    
+    return 0;
 }
 
-displayBarCode(barCode, n);
-
-//const int ARRAY_SIZE = n;
-
-
-
-//cout << "please enter first " << n << "-1 digits of your product code" << endl;
-
-
-
-
-//displayBarCode(barCode, ARRAY_SIZE);
-
-
-//cout << endl;
-
-//cout << "enter the first 11 digits of your product code:";
-
-
-
-
-
-
-
-//const int CODE = 12;
-//                   0  1  2  3  4  5  6  7  8  9  10 11
-//int barCode[CODE] = {2, 3, 1, 3, 9, 0, 8, 5, 3, 7, 7, 9};
-
-//cout << "odds" << endl;
-//addOdds(barCode, CODE);
-//cout << "evens" << endl;
-//addEvens(barCode, CODE);
-//cout << "both added" << endl;
-//addEvens_Odds(barCode, CODE);
-//cout << findCheck(barCode, CODE) << endl;
-
-//displayBarCode(barCode, CODE);
-
-//int numbers;
-
-//int sum = 0;
-
-//int j = 0; 
-
-
-//int ansOdd;
-
-//int ansEven;
-
-//cout << sum << endl;
-
-//ansOdd = barCode[0] + barCode[2] + barCode[4] + barCode[6] + barCode[8] + barCode[10];
-
-//ansEven = barCode[1] + barCode[3] + barCode[5] + barCode[7] + barCode[9];
-
-
-
-
-return 0;
-}

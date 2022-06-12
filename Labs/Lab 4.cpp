@@ -2,7 +2,7 @@
 
 using namespace std;
 
-//lab 4 is simplified version of lab 5, both will be due last week
+//lab 4 is simplified version of lab 5, both will be due next week
 //lab 5 will be full implementation while lab 4 will be just printing one month
 //jan to on sunday is lab 4
 
@@ -66,7 +66,7 @@ const int COLUMNS = 7;
 
 is_leap(1900);
 
-return 0;
+
 
 int month[ROWS][COLUMNS];
 
@@ -104,6 +104,6 @@ for (int i = 0; i < ROWS; i++) //for rows
 
 
 
-
+return 0;
 
 }
