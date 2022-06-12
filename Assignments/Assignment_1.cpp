@@ -29,6 +29,7 @@ void mainMenu(){
             case 1:
             {
                 size = 8;
+                cout << "Enter first 7 digits of your product code:";
                 return size;
             }
                 break;
@@ -36,6 +37,7 @@ void mainMenu(){
             case 2:
             {
                 size = 12;
+                cout << "Enter first 11 digits of your product code:";
                 return size;
             }
                 break;
@@ -43,6 +45,7 @@ void mainMenu(){
             case 3:
             {
                 size = 13;
+                cout << "Enter first 12 digits of your product code:";
                 return size;
             }
                 break;
@@ -50,12 +53,14 @@ void mainMenu(){
             case 4:
             {
                 size = 14;
+                cout << "Enter first 13 digits of your product code:";
                 return size;
             }
                 break;
             case 5:
             {
                 size = 18;
+                cout << "Enter first 17 digits of your product code:";
                 return size;
             }
                 break;
@@ -159,46 +164,45 @@ void displayBarCode(int arr[], int size)
 }
 
 
+
+
 int main(){
 
+//initialising some vars
+int codeArr[n];
+int transfer;
+string entryBarCode;
 
+//calls the menu
 mainMenu();
 
+//asks for which type of code and returns array size
 const int n = prodCodeType();
 
-int barCode[n];
+//cleans out the int array
+for(int i = 0; i < n; i++) 
+    {
+    codeArr[i] = 0;
+    }
+
+//collects the string
+cin >> entryBarCode;
+
+//changes the string into an integer array
+for(int i = 0; i < n; i++){
+
+    transfer = entryBarCode[i] - '0'; //converts the string (ie a char array to from char type to int)
+
+    codeArr[i] = transfer;
+
+    }
+
+//testing for now
 
 for(int i = 0; i < n; i++) {
 
-barCode[i] = 0;
+    cout << codeArr[i];
 
-}
-
-int transfer;
-
-string barc;
-
-cin >> barc;
-
-for(int i = 0; i < n; i++){
-
-transfer = barc[i] - '0';
-
-barCode[i] = transfer;
-
-}
-
-
-for (int i = 0; i < n; i++)
-{
-
-    cout << barCode[i];
-
-}
-
-
-
-
-    return 0;
+    }
 }
 
