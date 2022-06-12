@@ -1,6 +1,28 @@
+//*************************************************
+
+//the purpose of this code is to compute the final digit
+//of multiple different types of bar codes
+//it will prompt the user to decide which barcode it wants
+//then it will ask for the barcode as a string
+
+//there are error catches for both inputs
+
+//one thing to note is that my compiler is detecting an error
+//this is because I am using a non const variable technically
+//to decide the size of the array i use
+//it still runs fine but for now i couldnt find any way around it
+
+//thank you
+
+//*************************************************
+
+
+
 #include <iostream>
 
 using namespace std;
+
+
 
 //adds a nice menu to start with
 void mainMenu(){
