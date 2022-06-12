@@ -1,6 +1,7 @@
 #include <iostream>
 
 using namespace std;
+
 //adds a nice menu to start with
 void mainMenu(){
 
@@ -28,7 +29,7 @@ void mainMenu(){
 
             case 1:
             {
-                size = 8;
+                size = 7;
                 cout << "Enter first 7 digits of your product code:";
                 return size;
             }
@@ -36,7 +37,7 @@ void mainMenu(){
 
             case 2:
             {
-                size = 12;
+                size = 11;
                 cout << "Enter first 11 digits of your product code:";
                 return size;
             }
@@ -44,7 +45,7 @@ void mainMenu(){
 
             case 3:
             {
-                size = 13;
+                size = 12;
                 cout << "Enter first 12 digits of your product code:";
                 return size;
             }
@@ -52,14 +53,14 @@ void mainMenu(){
             
             case 4:
             {
-                size = 14;
+                size = 13;
                 cout << "Enter first 13 digits of your product code:";
                 return size;
             }
                 break;
             case 5:
             {
-                size = 18;
+                size = 17;
                 cout << "Enter first 17 digits of your product code:";
                 return size;
             }
@@ -77,18 +78,19 @@ void mainMenu(){
 //this is right now built for a full array, not n-1 inputs, same with addevens
 int addOdds(int arr[], int size){
 
-    int j, sum = 0;
+    int j = 0;
+    int sum = 0;
 
-    for(int i = 0; i < (size - 1); i++) //runs as many times as the size of the array
+    for(int i = 0; i < size; i++) //runs as many times as the size of the array
     {
-        if(j < (size - 1)) //makes sure it doesnt add more numbers than are elements of the array
+        if(j < size) //makes sure it doesnt add more numbers than are elements of the array
         {
             sum += arr[j]; //adds elements
             j = j + 2;     //ensures only "odd" elements are added
         }
     }
 
-        sum = sum * 3; //this multiplies the ans by 3
+           sum = sum * 3; //this multiplies the ans by 3
 
             return sum; //returns the sum
 
@@ -101,15 +103,15 @@ int addEvens(int arr[], int size){
     int j = 1;
     int sum = 0;
 
-    for(int i = 0; i < (size - 1); i++) //runs as many times as the size of the array
+    for(int i = 0; i < (size); i++) //runs as many times as the size of the array
     {
-        if(j < size -1) //makes sure it doesnt add more numbers than are elements of the array
+        if(j < size) //makes sure it doesnt add more numbers than are elements of the array
         {
             sum += arr[j]; //adds elements
             j = j + 2;     //ensures only "even" elements are added  
         }
     }
-
+      
         return sum; //returns the sum
 
 
@@ -127,7 +129,7 @@ int addEvens_Odds(int arr[], int size)
 
 }
 
-//finds the check digit through finding the diff 
+//finds the check digit through finding the diff
 int findCheck(int arr[], int size)
 {
 
@@ -158,7 +160,7 @@ void displayBarCode(int arr[], int size)
     cout << "." << endl;
 
     cout << "the product code is "; 
-    for(int i = 0; i < (size - 1); i++) //should print out array except for last digit
+    for(int i = 0; i < (size); i++) //prints array
     {
 
     cout << arr[i];
@@ -170,60 +172,12 @@ void displayBarCode(int arr[], int size)
 }
 
 
-int main(){
-
-//initialising some vars
-int transfer, barCodeLength;
-string entryBarCode;
-
-
-//calls the menu
-mainMenu();
-
-//asks for which type of code and returns array size
-const int sizeArr = prodCodeType();
-
-//makes it so that if product code 1-5 is not chosen, makes the whole program return 0
-if(sizeArr == 0)
+int main()
 {
-    return 0;
-}
 
-//initialising array
-int codeArr[sizeArr];
+int arr[12] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
 
-//cleans out the int array
-for(int i = 0; i < sizeArr; i++) 
-    {
-    codeArr[i] = 0;
-    }
-
-//collects the string
-cin >> entryBarCode;
-
-//gives us the length of the barcode, for error checking reasons
-barCodeLength = entryBarCode.length();
-
-//makes sure the string size is correct
-if(barCodeLength != (sizeArr - 1))
-    {
-        cout << "you should have entered " << (sizeArr - 1); 
-        cout << " digits, but you entered " << barCodeLength << " digits";
-        return 0;
-    }
-
-//changes the string into an integer array
-for(int i = 0; i < sizeArr; i++){
-
-    transfer = entryBarCode[i] - '0'; //converts the string (ie a char array to from char type to int)
-
-    codeArr[i] = transfer;
-
-    }
-
-
-displayBarCode(codeArr, sizeArr);
-
+displayBarCode(arr, 12);
 
 
 }
