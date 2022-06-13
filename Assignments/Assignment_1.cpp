@@ -111,8 +111,11 @@ int addOdds(int arr[], int size){
             j = j + 2;     //ensures only "odd" elements are added
         }
     }
-
-           sum = sum * 3; //this multiplies the ans by 3
+            if( size != 12) //takes into account the EAN-13 exception
+            {
+                sum = sum * 3;
+            }
+             //this multiplies the ans by 3
 
             return sum; //returns the sum
 
@@ -133,7 +136,10 @@ int addEvens(int arr[], int size){
             j = j + 2;     //ensures only "even" elements are added  
         }
     }
-      
+        if (size == 12) //takes into account the EAN-13 exception
+        {
+            sum = sum * 3;
+        }
         return sum; //returns the sum
 
 
@@ -147,6 +153,7 @@ int addEvens_Odds(int arr[], int size)
 
     sum = addEvens(arr,size) + addOdds(arr, size); //adds evens and odds together
 
+        
         return sum;
 
 }
@@ -166,8 +173,11 @@ int findCheck(int arr[], int size)
             alter++;
         }
 
+    //cout << alter << endl;
+    //cout << sum << endl;
     ans = alter - sum; 
 
+   // cout << ans << endl;
             return ans;
 
 }
