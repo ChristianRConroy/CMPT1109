@@ -8,6 +8,11 @@ using namespace std;
 
 
 
+//string month[12]= {"January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "November", "December"};
+
+
+
+
 bool is_leap(int year){
 
 int rem, rem2, rem3;
@@ -42,66 +47,57 @@ else
 
 }
 
-int num_days_per_month(int month)
+int num_days_per_month(int month, int year)
 {
 
-switch (month) {
-
-    case 1:
-    return 30;
-        break;
-
-    default:
-        return 31;
-
+if (month == 4 || month == 6 || month == 9 || month == 11 || month == 2 )
+{
+    if(month == 2 && is_leap(year))
+    {
+        return 29;
+    }
+    else if(month == 2 && is_leap(year) != true)
+    {
+        return 28;
+    }
+    else 
+        {
+            return 30;
+        }
+}
+else
+{
+    return 31;
+}
 }
 
-}
 
 int main(){
-const int ROWS = 5;
 
-const int COLUMNS = 7;
+int year = 2004;
 
-
-is_leap(1900);
-
-
-
-int month[ROWS][COLUMNS];
+cout << "Calender for year" << year << endl;
+cout << "Sun Mon Tue Wed Thur Fri Sat Sun" << endl;
 
 int day = 1;
 
-num_days_per_month(1);
-
-
-for (int i = 0; i < ROWS; i++) //for rows
+for(int i = 0; i < 5; i++)
 {
-    for(int j = 0; i < COLUMNS && day <= num_days_per_month(1); j++)
+    for(int j = 0; j < 7; j++)
     {
-        month[i][j] = day++;
-    }
-}
 
+        cout << day;
+        cout << "   ";
 
+        //if(i < 2)
+          //  cout << "  ";
 
-int counter = 1;
-
-//to print the thing
-for (int i = 0; i < ROWS; i++) //for rows
-{
-    for(int j = 0; i < COLUMNS && day <= num_days_per_month(1); j++)
-    {
-        cout << month[i][j] << " ";
-        counter++;
+        day++;
 
     }
+
     cout << endl;
 }
-
-// jan 2004 starting from sunday
-//is_leap(2004);
-
 
 
 return 0;
