@@ -2,8 +2,19 @@
 #include <fstream>
 using namespace std;
 
+int NEXT_CHAP = 18;
 
+int get_next_num(){
 
+if(NEXT_CHAP == 0){
+
+NEXT_CHAP = 18;
+return NEXT_CHAP--;
+
+}
+
+return NEXT_CHAP--;
+}
 
 int main(){
 
@@ -16,7 +27,13 @@ int counter = 0;
 
 bool ignoreN = false;
 
-file.get(partAnswer[counter++]); //this goes to the next character and .get reads from the file
+file.open("answers.txt");
+
+if(file.fail()){
+cout << "problem detected" << endl;
+}
+
+
 
 while(!file.eof()){ //this will allow us to read the whole line
 
@@ -28,14 +45,17 @@ while(!file.eof()){ //this will allow us to read the whole line
     counter = 0;
 
     }
-    else if(partAnswer[counter - 1] == '\n'){
 
-       int x = 16;     // get_next_number();
+    else if(partAnswer[counter - 1] == '#')
+    {
+
+       int x;
+       x = get_next_num();
 
        if(x >= 20) //this effectively checks if you have a hash in an array
        {
             partAnswer[counter - 1] = '1';
-            partAnswer[counter] = (x - 10) + '0';
+            partAnswer[counter++] = (x - 10) + '0';
 
        }
        else
@@ -44,6 +64,7 @@ while(!file.eof()){ //this will allow us to read the whole line
        }
         ignoreN = true;
     }
+
     else if(ignoreN && partAnswer[counter - 1] == 'N'){
         counter--;
         file.get(partAnswer[counter++]);
