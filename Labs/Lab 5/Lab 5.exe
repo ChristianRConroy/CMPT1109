@@ -33109,12 +33109,21 @@ while(true){
 
 cout << "plz, enter your next question" << endl;
 
+
+string question;
+
+cin >> question;
+
 string answer;
 
-cin >> answer;
+if (file >> answer)
+cout << answer << endl;
+
+else
+file.close();
+file.open("answers.txt");
 
 file >> answer;
-
 cout << answer << endl;
 
 }
