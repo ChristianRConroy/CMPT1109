@@ -4,69 +4,71 @@ using namespace std;
 
 int NEXT_CHAP = 18;
 
-int get_next_num(){
+int get_next_num(){ //finds the next chapter in the textbook
 
-if(NEXT_CHAP == 0){
+    if(NEXT_CHAP == 0)
+    { 
+        NEXT_CHAP = 18;
+        return NEXT_CHAP--;
+    }
 
-NEXT_CHAP = 18;
-return NEXT_CHAP--;
-
-}
-
-return NEXT_CHAP--;
+    return NEXT_CHAP--;
 }
 
 int main(){
 
 
-ifstream file;
+ifstream file; //our object
 
-char partAnswer[100];
+string question; //just for the question
 
-int counter = 0;
+char partAnswer[100]; //a 100 index array to fit our strings into
 
-bool ignoreN = false;
+int counter = 0; //counter
 
-string question;
+bool ignoreN = false; //known as a "false flag" it will turn true later on if 
+                      //correct conditions are met
 
+
+//opens our file
 file.open("answers.txt");
 
-if(file.fail()){
-cout << "problem detected" << endl;
+//checks to see if the file even opens
+if(file.fail())
+{
+    cout << "problem detected" << endl;
+    return 0;
 }
 
-   cout << "please  type in your question" << endl;
-    cin >> question;
 
-while(!file.eof()){ //this will allow us to read the whole line
+    cout << "please  type in your question" << endl;
 
+        cin >> question;
 
- 
+while(!file.eof())  //this will allow us to read the whole line
+{
 
     if(partAnswer[counter - 1] == '\n') //this will give us our answer
     {   
-
-    cout << partAnswer << endl;
-
-    counter = 0;
-
+        cout << partAnswer << endl;
+        counter = 0;
     }
 
-    else if(partAnswer[counter - 1] == '#')
+    else if(partAnswer[counter - 1] == '#') //this code checks if theres a hash in the c-string
     {
 
-       int x;
-       x = get_next_num();
+       int NEXT_CHAP;
+       NEXT_CHAP = get_next_num();
 
-       if(x >= 20) //this effectively checks if you have a hash in an array
+       if(NEXT_CHAP >= 20) 
        {
             partAnswer[counter - 1] = '1';
-            partAnswer[counter++] = (x - 10) + '0';
+            partAnswer[counter++] = (NEXT_CHAP - 10) + '0';
 
        }
        else
        {
-            partAnswer[counter - 1] = (x - 10) + '0';
+            partAnswer[counter - 1] = (NEXT_CHAP - 10) + '0';
        }
         ignoreN = true;
     }
