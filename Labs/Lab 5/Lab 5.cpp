@@ -27,15 +27,21 @@ int counter = 0;
 
 bool ignoreN = false;
 
+string question;
+
 file.open("answers.txt");
 
 if(file.fail()){
 cout << "problem detected" << endl;
 }
 
-
+   cout << "please  type in your question" << endl;
+    cin >> question;
 
 while(!file.eof()){ //this will allow us to read the whole line
+
+
+ 
 
     if(partAnswer[counter - 1] == '\n') //this will give us our answer
     {   
