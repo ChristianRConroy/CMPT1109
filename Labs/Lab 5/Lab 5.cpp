@@ -32,21 +32,20 @@ file.open("answers.txt");
 //checks to see if the file even opens
 if(!file.fail())
 {
-  cout << "please  type in your question" << endl;
-            cin >> question;
+    
+    cout << "please  type in your question" << endl;
+    cin >> question;
 
     while(!file.eof())  //this will allow us to read the whole line
     {
 
-  
-            
-        
    
 
-        if(partAnswer[counter - 1] == '\n') //this will give us our answer
+        if(partAnswer[counter-1] == '\n') //this will give us our answer
         {   
             cout << partAnswer;
             counter = 0;
+            
             cout << "please  type in your question" << endl;
             cin >> question;
         }
@@ -86,10 +85,10 @@ if(!file.fail())
 }
 
 else
-    cout << "your filename is incorrect" << endl;
+    cout << "your filename is incorrect" << endl; //if the file fails
 
 
-file.close();
+file.close(); //closes up the file
 
 return 0;    
 
