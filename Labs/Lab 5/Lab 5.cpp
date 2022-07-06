@@ -48,6 +48,7 @@ if(!file.fail())
             
             cout << "please  type in your question" << endl;
             cin >> question;
+            cin.ignore();
         }
 
 

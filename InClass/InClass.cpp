@@ -1,45 +1,27 @@
 #include <iostream>
-#include <fstream>
+#include <vector>
+
 using namespace std;
 
 
 int main()
 {
 
-	int x;
-	//cin >> x;
-	//cout << "sadasd" << x;
 
+vector<int> arr;
 
+arr.push_back(56); //adds an element to an array
 
-
-	ifstream inStream;
-
-	inStream.open("input.txt");
-
-	if (inStream.fail()) {  //fail is boolean function that returns true or false depending if the 
-							//file was opened or not
-		cout << "something went wrong" << endl;
-		return -1;
+arr[0] = 57; //later changes it (must be pushed before it can be reset!!!!!)
 	
-	}
+arr.pop_back();
 
-	inStream >> x;
+cout << arr.size();
 
-	inStream.close(); //will close the open file because because
-
-	//cout << x;
+//cout << arr[0];
 
 
-	ofstream outStream;
 
-	outStream.open("output.txt");
-
-	outStream << x;
-
-
-	return -1;
-
-
+return 0;
 
 }

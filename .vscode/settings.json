@@ -5,7 +5,8 @@
         "xstring": "cpp",
         "fstream": "cpp",
         "xiosbase": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "vector": "cpp"
     },
     "editor.foldingMaximumRegions": 10000
 }
