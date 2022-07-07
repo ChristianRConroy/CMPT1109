@@ -15,7 +15,7 @@ please enter your comp station
 1     1: empty 2: empty 3: empty 4: empty 5: empty
 2     1: empty 2: 12345 3: empty 4: empty 5: empty 6: empty
 3     1: empty 2: empty 3: empty 4: empty
-4     1: empty 2: empty 3: empty
+4     1: empty 2: empty 3: empty 
 
 choose one of the following
 
@@ -25,35 +25,16 @@ choose one of the following
 4 - exit
 1
 please enter your user ID
-32456
-please enter your lab number
-2
-please enter your comp station
-6
-
-1     1: empty 2: empty 3: empty 4: empty 5: empty
-2     1: empty 2: 12345 3: empty 4: empty 5: empty 6: 32456
-3     1: empty 2: empty 3: empty 4: empty
-4     1: empty 2: empty 3: empty
-
-choose one of the following
-
-1 - Login
-2 - Logoff
-3 - Search
-4 - exit
-1
-please enter your user ID
-34212
+43215
 please enter your lab number
 4
 please enter your comp station
 3
 
 1     1: empty 2: empty 3: empty 4: empty 5: empty
-2     1: empty 2: 12345 3: empty 4: empty 5: empty 6: 32456
+2     1: empty 2: 12345 3: empty 4: empty 5: empty 6: empty
 3     1: empty 2: empty 3: empty 4: empty
-4     1: empty 2: empty 3: 34212
+4     1: empty 2: empty 3: 43215
 
 choose one of the following
 
@@ -61,4 +42,34 @@ choose one of the following
 2 - Logoff
 3 - Search
 4 - exit
-4
+2
+please enter your lab number
+2
+please enter your comp station
+2
+
+1     1: empty 2: empty 3: empty 4: empty 5: empty
+2     1: empty 2: empty 3: empty 4: empty 5: empty 6: empty
+3     1: empty 2: empty 3: empty 4: empty
+4     1: empty 2: empty 3: 43215
+
+choose one of the following
+
+1 - Login
+2 - Logoff
+3 - Search
+4 - exit
+3
+please enter your user ID
+43215
+the lab is 4
+the machine is 3
+
+choose one of the following
+
+1 - Login
+2 - Logoff
+3 - Search
+4 - exit
+3
+please enter your user ID

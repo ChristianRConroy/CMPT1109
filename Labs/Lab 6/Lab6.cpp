@@ -152,7 +152,7 @@ for(int i = 0; i < ROWS; i++){
 do
 {
 
-    int errorCatch = 0, errorCatch2 = 0;
+    int errorCatch = 0, errorCatch2 = 0, errorCatch3 = 0;
 
     //sets up our menu
     login_Display();
@@ -243,6 +243,8 @@ do
                             }
                             cout << endl;
                     }
+                    cout << "login succussful" << endl;
+                    cout << endl;
                     break;
             }
         case 2: //logout
@@ -251,11 +253,29 @@ do
                 lab_Num = get_Lab_Num();
                 comp_Station = get_Comp_Station(lab_Num);
 
-                arr[lab_Num - 1][comp_Station - 1] = 0;
+             for(int i = 0; i < ROWS; i++)
+                    {
+                        for(int j = 0; j< COLUMNS_PER_ROWS_ARR[i]; j++)
+                            {
+                                if(lab_Num - 1 == i && comp_Station - 1 == j && arr[i][j] == 0)
+                                {
+                                    cout << "no ones logged in on that device" << endl;
+                                    errorCatch3 = 10;
+                                    break;
+                                }
+
+                            }
+                          if (errorCatch3 == 10)
+                        break;  
+                    }
+                    if (errorCatch3 == 10)
+                        break;
+
+                arr[lab_Num - 1][comp_Station - 1] = 0; //is what logs out our user
 
                     cout << endl; //just for spacing
 
-                for(int i = 0; i < ROWS; i++)
+                for(int i = 0; i < ROWS; i++) //prints entries
                     {
                         cout << (i + 1) << "     ";
 
@@ -269,6 +289,9 @@ do
                             }
                             cout << endl;
                     }
+                    cout << endl;
+                    cout << "logout succussful" << endl;
+                    cout << endl;
                 break;
             }
         case 3: //linear search
@@ -283,8 +306,10 @@ do
                             {
                                 if(arr[i][j] == user_Id) //if there are "empty" quote on quote entries, they hold empty
                                    { 
+                                    cout << endl;
                                     cout << "the lab is "<< i + 1 << endl;
                                     cout << "the machine is " << j + 1 << endl;;
+                                    cout << endl;
                                    }
                             }
                             
@@ -305,8 +330,10 @@ do
             }
 
         default:
-            {
+            {   
+                cout << endl;
                 cout << "invalid selection" << endl;
+                cout << endl;
                 break;
             }
 
