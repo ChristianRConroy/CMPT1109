@@ -146,7 +146,6 @@ for(int i = 0; i < ROWS; i++){
             arr[i][j] = 0; //sets each column and then row to 0
         }
 
-            cout << endl; //makes a new row
     }
 
 //starting of the menu
@@ -227,15 +226,19 @@ do
       
                 //effectively is what places our user id in the multidimensional array 
                 arr[lab_Num -1][comp_Station -1] = user_Id;
+                
+                cout << endl; //just for spacing
 
                 for(int i = 0; i < ROWS; i++)
                     {
+                        cout << (i + 1) << "     ";
+
                         for(int j = 0; j< COLUMNS_PER_ROWS_ARR[i]; j++)
                             {
                                 if(arr[i][j] == 0) //if there are "empty" quote on quote entries, they hold empty
-                                    cout << "empty" << " ";
+                                    cout << (j + 1) << ": " << "empty ";
                                 else
-                                    cout << arr[i][j] << " "; //otherwise a value is assigned to them
+                                    cout << (j + 1) << ": " << arr[i][j] << " "; //otherwise a value is assigned to them
 
                             }
                             cout << endl;
@@ -250,14 +253,18 @@ do
 
                 arr[lab_Num - 1][comp_Station - 1] = 0;
 
-                    for(int i = 0; i < ROWS; i++)
+                    cout << endl; //just for spacing
+
+                for(int i = 0; i < ROWS; i++)
                     {
+                        cout << (i + 1) << "     ";
+
                         for(int j = 0; j< COLUMNS_PER_ROWS_ARR[i]; j++)
                             {
                                 if(arr[i][j] == 0) //if there are "empty" quote on quote entries, they hold empty
-                                    cout << "empty" << " ";
+                                    cout << (j + 1) << ": " << "empty ";
                                 else
-                                    cout << arr[i][j] << " "; //otherwise a value is assigned to them
+                                    cout << (j + 1) << ": " << arr[i][j] << " "; //otherwise a value is assigned to them
 
                             }
                             cout << endl;
@@ -280,7 +287,7 @@ do
                                     cout << "the machine is " << j + 1 << endl;;
                                    }
                             }
-                            cout << endl;
+                            
                     }
                     break;
                 
