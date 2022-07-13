@@ -1,18 +1,46 @@
 #include <iostream>
-#include <vector>
 #include <string>
 
 using namespace std;
 
 
+
+class User{
+
+public:
+string name;
+string DoB;
+
+};
+
+class Student: public User{
+
+public:
+int GPA;
+
+};
+
+class Employee: public User{
+
+public:
+string SIN;
+
+};
+
 int main()
 {
 
-string yuh = "empty ";
+Employee x;
 
-int num = yuh.size();
+x.name = "joe";
 
-cout << num;
+x.SIN = "1234567890";
+
+Student y;
+
+y.name = "biden";
+
+y.GPA = 86;
 
 
 return 0;
