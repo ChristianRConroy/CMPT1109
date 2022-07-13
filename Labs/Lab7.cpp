@@ -8,6 +8,8 @@ class Movie {
 
 private:
 
+//defines all our variables
+
 string name;    
 
 string MBAA;
@@ -16,7 +18,7 @@ int numRating1, numRating2, numRating3, numRating4, numRating5;
 
 public:
 
-
+//default constructor
 Movie (string name, string MBAA)
 {
 
@@ -24,25 +26,20 @@ Movie (string name, string MBAA)
 this -> name = name; 
 this -> MBAA = MBAA;
 
-numRating1 = 0; 
-numRating2 = 0;
-numRating3 = 0; 
-numRating4 = 0; 
-numRating5 = 0; 
+//initializes our rating counters
+numRating1 = 0, numRating2 = 0, numRating3 = 0, numRating4 = 0, numRating5 = 0;
 
 }
 
+//regular constructor
 Movie()
 {
 
-numRating1 = 0; 
-numRating2 = 0;
-numRating3 = 0; 
-numRating4 = 0; 
-numRating5 = 0; 
+numRating1 = 0, numRating2 = 0, numRating3 = 0, numRating4 = 0, numRating5 = 0; 
 
 }
 
+//increments our rating counter "adds a review"
 void addRating(int num)
 {
     if(num == 1)
@@ -73,36 +70,41 @@ void addRating(int num)
         cout << "invalid entry" << endl;
 }
 
+//returns the name of the movie
 string getName()
 {
     return name;
 }
 
+//returns the rating of the movie
 string getMBAA(){
 
     return MBAA;
 }
 
-
+//collects the average
 double getAverage (){
 
-    double total = 0, bottom = 0;
+    double total = 0, amountCount = 0;
 
-    bottom = (numRating1 + numRating2 + numRating3 + numRating4 + numRating5) * 1.0;
+    //ensures we get a proper average regardless of test cases
+    amountCount = (numRating1 + numRating2 + numRating3 + numRating4 + numRating5) * 1.0;
 
-    total = (numRating1*1.0 + numRating2*2.0 + numRating3*3.0 + numRating4*4.0 + numRating5*5.0) / 5.0;
+    total = (numRating1*1.0 + numRating2*2.0 + numRating3*3.0 + numRating4*4.0 + numRating5*5.0) / amountCount;
 
     return total;
 }
 
+//sets our movie name
 void setName(string name)
 {
     this -> name = name;
 }
 
+//gets our rating
 void setMbaa (string MBAA)
 {
-    this -> MBAA = MBAA;
+    this -> MBAA = MBAA; 
 }
 
 
@@ -112,6 +114,7 @@ void setMbaa (string MBAA)
 int main()
 {
 
+//test case number 2
 Movie movie1("300", "R");
 
 movie1.addRating(1);
@@ -125,6 +128,8 @@ cout << movie1.getAverage() << endl;
 
 cout << endl;
 
+
+//test case number 2
 Movie movie2("The Godfather", "R");
 
 movie2.addRating(1);
