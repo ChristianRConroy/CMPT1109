@@ -6,6 +6,7 @@ class Rational
 {
 
 private:
+    int numerator = 0, denomenator = 0;
     double a = 0, b = 0, c = 0, target = 0, num = 0;
 
 public:
@@ -21,7 +22,12 @@ public:
         this -> target = target;
         a = 0, b = 0, c = 0;
     }
-
+    
+    Rational (int numerator, int denomenator)
+    {
+        this -> numerator = numerator;
+        this -> denomenator = denomenator;
+    }
     double add(double num)
     {
 
