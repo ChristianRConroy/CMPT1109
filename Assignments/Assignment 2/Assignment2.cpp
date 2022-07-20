@@ -23,20 +23,8 @@ public:
         this->numerator = numerator;
         this->denomenator = denomenator;
     }
-    double add(Rational x)
-    {
 
-        a = numerator;
-        b = denomenator;
-
-        c = x.getNum(x);
-
-        d = x.getDenom(x);
-
-        return (a + b + c + d);
-    }
-
-    //returns the integer value of the numerator of a rational number
+    // returns the integer value of the numerator of a rational number
     int getNum(Rational x)
     {
 
@@ -44,7 +32,8 @@ public:
 
         return numerator;
     }
-    //returns the integer value of the denomenator of a rational number
+
+    // returns the integer value of the denomenator of a rational number
     int getDenom(Rational x)
     {
 
@@ -52,25 +41,66 @@ public:
 
         return denomenator;
     }
-
-    double sub(double num)
+    //adds two rational numbers
+    double add(Rational x)
     {
-        return (target - num);
+        // this retrieves all our data we need to perform operations
+        a = numerator;
+        b = denomenator;
+        c = x.getNum(x); //function that grabs from input
+        d = x.getDenom(x);
+
+        return ((a * d + b * c) / (b * d));
     }
 
-    double mult(double num)
+//subtracts two rational numbers
+    double sub(Rational x)
     {
-        return (target * num);
+        // this retrieves all our data we need to perform operations
+        a = numerator;
+        b = denomenator;
+        c = x.getNum(x); //function that grabs from input
+        d = x.getDenom(x);
+
+        return ((a * d - b * c) / (b * d));
     }
 
-    double div(double num)
+//multiplication of rational numbers
+    double mul(Rational x)
     {
-        return ((target / num));
+
+        // this retrieves all our data we need to perform operations
+        a = numerator;
+        b = denomenator;
+        c = x.getNum(x); //function that grabs from input
+        d = x.getDenom(x);
+
+        return ((a * c) / (b * d));
     }
 
-    bool less(double num)
+//division of two rationals
+    double div(Rational x)
     {
-        if (target < num)
+
+        // this retrieves all our data we need to perform operations
+        a = numerator;
+        b = denomenator;
+        c = x.getNum(x); //function that grabs from input
+        d = x.getDenom(x);
+
+        return ((a * d) / (c * b));
+    }
+
+//less than
+    bool less(Rational x)
+    {
+        //collects all our necessary data
+        a = numerator;
+        b = denomenator;
+        c = x.getNum(x); //function that finds denom and num of input class
+        d = x.getDenom(x);
+
+        if ((a * d) < (c * b))
             return true;
         else
             return false;
@@ -80,11 +110,15 @@ public:
 int main()
 {
 
-    Rational number(10, 20);
+    Rational number(1, 8);
 
-    Rational number2(4, 2);
+    Rational number2(1, 5);
 
-    cout << number.add(number2);
+    cout << number.add(number2) << endl;
+    cout << number.sub(number2)<< endl;
+    cout << number.mul(number2)<< endl;
+    cout << number.div(number2)<< endl;
+    cout << number.less(number2)<< endl;
 
     return 0;
 }
