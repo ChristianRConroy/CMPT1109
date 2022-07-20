@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -16,12 +17,19 @@ public:
 
         a = 0, b = 0, c = 0, d = 0, target = 0, numerator = 0, denomenator = 0;
     }
-    // rational number class is created
 
+    // rational number class for more complicated rationals is created
     Rational(int numerator, int denomenator)
     {
         this->numerator = numerator;
         this->denomenator = denomenator;
+    }
+
+    //rational number class for things like 34/1 or 2/1 is created
+    Rational(int numerator)
+    {
+        this ->numerator = numerator;
+        denomenator = 1;
     }
 
     // returns the integer value of the numerator of a rational number
@@ -110,9 +118,9 @@ public:
 int main()
 {
 
-    Rational number(1, 8);
+    Rational number(4);
 
-    Rational number2(1, 5);
+    Rational number2(2);
 
     cout << number.add(number2) << endl;
     cout << number.sub(number2)<< endl;
