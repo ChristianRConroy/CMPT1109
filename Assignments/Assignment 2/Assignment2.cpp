@@ -7,31 +7,50 @@ class Rational
 
 private:
     int numerator = 0, denomenator = 0;
-    double a = 0, b = 0, c = 0, target = 0, num = 0;
+    double a = 0, b = 0, c = 0, d = 0, target = 0, num = 0;
 
 public:
     // default constructor for class
     Rational()
     {
 
-        a = 0, b = 0, c = 0, target = 0;
+        a = 0, b = 0, c = 0, d = 0, target = 0, numerator = 0, denomenator = 0;
     }
     // rational number class is created
-    Rational(double target)
+
+    Rational(int numerator, int denomenator)
     {
-        this -> target = target;
-        a = 0, b = 0, c = 0;
+        this->numerator = numerator;
+        this->denomenator = denomenator;
     }
-    
-    Rational (int numerator, int denomenator)
-    {
-        this -> numerator = numerator;
-        this -> denomenator = denomenator;
-    }
-    double add(double num)
+    double add(Rational x)
     {
 
-        return (target + num);
+        a = numerator;
+        b = denomenator;
+
+        c = x.getNum(x);
+
+        d = x.getDenom(x);
+
+        return (a + b + c + d);
+    }
+
+    //returns the integer value of the numerator of a rational number
+    int getNum(Rational x)
+    {
+
+        this->numerator = numerator;
+
+        return numerator;
+    }
+    //returns the integer value of the denomenator of a rational number
+    int getDenom(Rational x)
+    {
+
+        this->denomenator = denomenator;
+
+        return denomenator;
     }
 
     double sub(double num)
@@ -61,13 +80,11 @@ public:
 int main()
 {
 
-    Rational number(10);
+    Rational number(10, 20);
 
-    cout << number.add(5) << endl;
-    cout << number.sub(5) << endl;
-    cout << number.mult(5) << endl;
-    cout << number.div(5) << endl;
-    cout << number.less(10) << endl;
+    Rational number2(4, 2);
+
+    cout << number.add(number2);
 
     return 0;
 }
