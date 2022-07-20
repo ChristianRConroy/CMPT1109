@@ -2,11 +2,12 @@
 #include <fstream>
 
 using namespace std;
-
+istream x;
 class Rational
 {
 
 private:
+    
     int numerator = 0, denomenator = 0;
     double a = 0, b = 0, c = 0, d = 0, target = 0, num = 0;
 
@@ -14,7 +15,6 @@ public:
     // default constructor for class
     Rational()
     {
-
         a = 0, b = 0, c = 0, d = 0, target = 0, numerator = 0, denomenator = 0;
     }
 
@@ -25,10 +25,10 @@ public:
         this->denomenator = denomenator;
     }
 
-    //rational number class for things like 34/1 or 2/1 is created
+    // rational number class for things like 34/1 or 2/1 is created
     Rational(int numerator)
     {
-        this ->numerator = numerator;
+        this->numerator = numerator;
         denomenator = 1;
     }
 
@@ -49,69 +49,102 @@ public:
 
         return denomenator;
     }
-    //adds two rational numbers
+    // adds two rational numbers
     double add(Rational x)
     {
         // this retrieves all our data we need to perform operations
         a = numerator;
         b = denomenator;
-        c = x.getNum(x); //function that grabs from input
+        c = x.getNum(x); // function that grabs from input
         d = x.getDenom(x);
 
         return ((a * d + b * c) / (b * d));
     }
 
-//subtracts two rational numbers
+    // subtracts two rational numbers
     double sub(Rational x)
     {
         // this retrieves all our data we need to perform operations
         a = numerator;
         b = denomenator;
-        c = x.getNum(x); //function that grabs from input
+        c = x.getNum(x); // function that grabs from input
         d = x.getDenom(x);
 
         return ((a * d - b * c) / (b * d));
     }
 
-//multiplication of rational numbers
+    // multiplication of rational numbers
     double mul(Rational x)
     {
 
         // this retrieves all our data we need to perform operations
         a = numerator;
         b = denomenator;
-        c = x.getNum(x); //function that grabs from input
+        c = x.getNum(x); // function that grabs from input
         d = x.getDenom(x);
 
         return ((a * c) / (b * d));
     }
 
-//division of two rationals
+    // division of two rationals
     double div(Rational x)
     {
 
         // this retrieves all our data we need to perform operations
         a = numerator;
         b = denomenator;
-        c = x.getNum(x); //function that grabs from input
+        c = x.getNum(x); // function that grabs from input
         d = x.getDenom(x);
 
         return ((a * d) / (c * b));
     }
 
-//less than
+    // less than
     bool less(Rational x)
     {
-        //collects all our necessary data
+        // collects all our necessary data
         a = numerator;
         b = denomenator;
-        c = x.getNum(x); //function that finds denom and num of input class
+        c = x.getNum(x); // function that finds denom and num of input class
         d = x.getDenom(x);
 
         if ((a * d) < (c * b))
             return true;
         else
             return false;
+    }
+    //returns the negative of the member
+    double neg(){
+
+        a = numerator;
+        b = denomenator;
+
+        return ((-1 * a)/b);
+
+
+    }
+  
+    void input(istream x)
+    {
+        ofstream file;
+
+        file.open("Rationals.txt");
+
+        string y;
+
+        x >> y;
+
+        file << y << "/";
+
+        file.close();
+
+
+
+    }
+   
+    void output(string x)
+    {
+        ;
     }
 };
 
@@ -122,11 +155,8 @@ int main()
 
     Rational number2(2);
 
-    cout << number.add(number2) << endl;
-    cout << number.sub(number2)<< endl;
-    cout << number.mul(number2)<< endl;
-    cout << number.div(number2)<< endl;
-    cout << number.less(number2)<< endl;
+    number.input(x);
+
 
     return 0;
 }
