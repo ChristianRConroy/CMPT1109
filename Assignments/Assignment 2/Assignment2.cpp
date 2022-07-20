@@ -2,12 +2,10 @@
 #include <fstream>
 
 using namespace std;
-istream x;
 class Rational
 {
 
 private:
-    
     int numerator = 0, denomenator = 0;
     double a = 0, b = 0, c = 0, d = 0, target = 0, num = 0;
 
@@ -49,6 +47,7 @@ public:
 
         return denomenator;
     }
+    
     // adds two rational numbers
     double add(Rational x)
     {
@@ -113,50 +112,70 @@ public:
         else
             return false;
     }
-    //returns the negative of the member
-    double neg(){
+   
+    // returns the negative of the member
+    double neg()
+    {
 
         a = numerator;
         b = denomenator;
 
-        return ((-1 * a)/b);
-
-
-    }
-  
-    void input(istream x)
-    {
-        ofstream file;
-
-        file.open("Rationals.txt");
-
-        string y;
-
-        x >> y;
-
-        file << y << "/";
-
-        file.close();
-
-
-
-    }
-   
-    void output(string x)
-    {
-        ;
+        return ((-1 * a) / b);
     }
 };
+
+// i wasnt able to get it to work with classes, but here is a function outside the
+// member class that writes to a file
+void output()
+{
+    ofstream file;
+    int x, y;
+    cout << "please enter numerator" << endl;
+    cin >> x;
+    cout << "please enter denomenator" << endl;
+    cin >> y;
+
+    file.open("Rationals.txt");
+
+    file << x << "/" << y;
+
+    file.close();
+}
+
+//non class member function that does the same thing
+void input()
+{
+
+    string rational;
+
+    ifstream file;
+
+    file.open("Rationals.txt");
+
+    file >> rational;
+
+    file.close();
+}
 
 int main()
 {
 
-    Rational number(4);
-
+    //test cases
+    Rational number1(8,3);
     Rational number2(2);
 
-    number.input(x);
+//tests
+cout << number1.add(number2) << endl;
+cout << number1.sub(number2) << endl;
+cout << number1.mul(number2) << endl;
+cout << number1.div(number2) << endl;
+cout << number1.less(number2) << endl;
+cout << number1.neg() << endl;
+cout << number2.neg() << endl;
 
+//non-member file i/o
+input();
+output();
 
     return 0;
 }

@@ -1,1 +1,20 @@
-hello
+17/7
+
+
+
+
+
+//***********************************
+//output in console, above was the work of output();
+4.66667
+0.666667
+5.33333
+1.33333
+0
+-2.66667
+-2
+please enter numerator
+17
+please enter denomenator
+7
+//*************************************
