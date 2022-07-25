@@ -13,6 +13,8 @@ private:
 
     string MBAA;
 
+    int ratingarr[5];
+
     int numRating1, numRating2, numRating3, numRating4, numRating5;
 
 public:
@@ -26,6 +28,12 @@ public:
 
         // initializes our rating counters
         numRating1 = 0, numRating2 = 0, numRating3 = 0, numRating4 = 0, numRating5 = 0;
+
+
+        for(int i = 0; i < 5; i++)
+        {
+            ratingarr[i] = 0;
+        }
     }
 
     // default constructor
@@ -33,6 +41,11 @@ public:
     {
 
         numRating1 = 0, numRating2 = 0, numRating3 = 0, numRating4 = 0, numRating5 = 0;
+         
+         for(int i = 0; i < 5; i++)
+        {
+            ratingarr[i] = 0;
+        }
     }
 
     // increments our rating counter "adds a review"
@@ -40,23 +53,23 @@ public:
     {
         if (num == 1)
         {
-            numRating1++;
+             ratingarr[0]++;
         }
         else if (num == 2)
         {
-            numRating2++;
+            ratingarr[1]++;
         }
         else if (num == 3)
         {
-            numRating3++;
+            ratingarr[2]++;
         }
         else if (num == 4)
         {
-            numRating4++;
+            ratingarr[3]++;
         }
         else if (num == 5)
         {
-            numRating5++;
+            ratingarr[4]++;
         }
         else
             cout << "invalid entry" << endl;
@@ -82,9 +95,9 @@ public:
         double total = 0, amountCount = 0;
 
         // ensures we get a proper average regardless of test cases
-        amountCount = (numRating1 + numRating2 + numRating3 + numRating4 + numRating5) * 1.0;
+        amountCount = (ratingarr[0] + ratingarr[1] + ratingarr[2] + ratingarr[3] + ratingarr[4]) * 1.0;
 
-        total = (numRating1 * 1.0 + numRating2 * 2.0 + numRating3 * 3.0 + numRating4 * 4.0 + numRating5 * 5.0) / amountCount;
+        total = (ratingarr[0] * 1.0 + ratingarr[1] * 2.0 + ratingarr[2] * 3.0 + ratingarr[3] * 4.0 + ratingarr[4] * 5.0) / amountCount;
 
         return total;
     }
