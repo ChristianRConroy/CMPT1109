@@ -9,13 +9,13 @@ class Movie
 private:
     // defines all our variables
 
+    const int SET = 5;
+
     string name;
 
     string MBAA;
 
-    int ratingarr[5];
-
-    int numRating1, numRating2, numRating3, numRating4, numRating5;
+    int *arr;
 
 public:
     // regular constructor
@@ -26,13 +26,11 @@ public:
         this->name = name;
         this->MBAA = MBAA;
 
-        // initializes our rating counters
-        numRating1 = 0, numRating2 = 0, numRating3 = 0, numRating4 = 0, numRating5 = 0;
+        arr = new int[SET];
 
-
-        for(int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
-            ratingarr[i] = 0;
+            arr[i] = 0;
         }
     }
 
@@ -40,39 +38,21 @@ public:
     Movie()
     {
 
-        numRating1 = 0, numRating2 = 0, numRating3 = 0, numRating4 = 0, numRating5 = 0;
-         
-         for(int i = 0; i < 5; i++)
+        arr = new int[SET];
+
+        for (int i = 0; i < 5; i++)
         {
-            ratingarr[i] = 0;
+            arr[i] = 0;
         }
     }
 
     // increments our rating counter "adds a review"
     void addRating(int num)
     {
-        if (num == 1)
-        {
-             ratingarr[0]++;
-        }
-        else if (num == 2)
-        {
-            ratingarr[1]++;
-        }
-        else if (num == 3)
-        {
-            ratingarr[2]++;
-        }
-        else if (num == 4)
-        {
-            ratingarr[3]++;
-        }
-        else if (num == 5)
-        {
-            ratingarr[4]++;
-        }
+        if (num >= 1 || num <= SET)
+            arr[num - 1]++;
         else
-            cout << "invalid entry" << endl;
+            cout << "wrong" << endl;
     }
 
     // returns the name of the movie
@@ -92,14 +72,15 @@ public:
     double getAverage()
     {
 
-        double total = 0, amountCount = 0;
+        double sum1 = 0, sum2 = 0;
+        
+        for(int i = 0; i < SET; i++)
+        {
+            sum1 += arr[i] * (i+1);
+            sum2 += arr[i];
+        }
 
-        // ensures we get a proper average regardless of test cases
-        amountCount = (ratingarr[0] + ratingarr[1] + ratingarr[2] + ratingarr[3] + ratingarr[4]) * 1.0;
-
-        total = (ratingarr[0] * 1.0 + ratingarr[1] * 2.0 + ratingarr[2] * 3.0 + ratingarr[3] * 4.0 + ratingarr[4] * 5.0) / amountCount;
-
-        return total;
+        return sum1 /(sum2 *1.0);
     }
 
     // sets our movie name
@@ -112,6 +93,32 @@ public:
     void setMbaa(string MBAA)
     {
         this->MBAA = MBAA;
+    }
+
+    // copy constructor
+    Movie(Movie &y)
+    {
+        arr = new int[SET];
+        for (int i = 0; i < SET; i++)
+        { 
+            this->arr[i] = y.arr[i];
+        }
+    }
+
+    // operator equal member function
+    void operator=(Movie x)
+    {
+
+        // deep copy
+        for (int i = 0; i < SET; i++)
+        {
+            this->arr[i] = x.arr[i];
+        }
+    }
+
+    ~Movie()
+    {
+        delete []arr;
     }
 };
 
@@ -142,6 +149,11 @@ int main()
     movie2.addRating(5);
     cout << movie2.getName() << endl;
     cout << movie2.getMBAA() << endl;
+    cout << movie2.getAverage() << endl;
+
+    movie1 = movie2;
+    movie1.addRating(3);
+    cout << movie1.getAverage() << endl;
     cout << movie2.getAverage() << endl;
 
     return 0;
