@@ -28,7 +28,7 @@ public:
 
         arr = new int[SET];
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < SET; i++)
         {
             arr[i] = 0;
         }
@@ -40,7 +40,7 @@ public:
 
         arr = new int[SET];
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < SET; i++)
         {
             arr[i] = 0;
         }
@@ -64,7 +64,6 @@ public:
     // returns the rating of the movie
     string getMBAA()
     {
-
         return MBAA;
     }
 
@@ -73,14 +72,14 @@ public:
     {
 
         double sum1 = 0, sum2 = 0;
-        
-        for(int i = 0; i < SET; i++)
+
+        for (int i = 0; i < SET; i++)
         {
-            sum1 += arr[i] * (i+1);
+            sum1 += arr[i] * (i + 1);
             sum2 += arr[i];
         }
 
-        return sum1 /(sum2 *1.0);
+        return sum1 / (sum2 * 1.0);
     }
 
     // sets our movie name
@@ -100,7 +99,7 @@ public:
     {
         arr = new int[SET];
         for (int i = 0; i < SET; i++)
-        { 
+        {
             this->arr[i] = y.arr[i];
         }
     }
@@ -116,9 +115,10 @@ public:
         }
     }
 
+    // deconstructors
     ~Movie()
     {
-        delete []arr;
+        delete[] arr;
     }
 };
 
