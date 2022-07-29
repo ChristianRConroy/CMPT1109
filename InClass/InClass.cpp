@@ -2,69 +2,37 @@
 
 using namespace std;
 
-class C1
+void f1(int arr[], int size_, int counter)
 {
 
-public:
+   if(counter != size_ && counter >= 0)
+   {
+    cout << arr[counter] << endl;
+    f1(arr, size_, counter + 1);
+    
+   }
+}
 
-int *p1;
-    C1()
-    {
-        p1 = new int;
-        *p1 = 5;
-        cout << "this is a constructor of c1";
-    }
-
-    ~C1() //this is a destructor, it removes the object after its purpose is completed
-    {
-        delete p1; //it is usually used to eliminate dynamic arrays and variables
-        cout << "this is a destructor of c1";
-    }
-
- C1(C1 & x){
-        p1 = new int;
-        *p1 = *(x.p1);
-    }
-
-    void operator=(C1 x){
-
-        *p1 = (*x.p1); //deep copy
-
-    }
-   
-};
-
-class C2 : public C1
+void f2(int arr[], int size_)
 {
 
-public:
-    C2()
+    for (int i = 0; i < size_; i++)
+
     {
 
-        cout << "this is a constructor of c2";
+        cout << arr[i] << endl;
     }
 
-    ~C2()
-    {
-
-        cout << "this is a destructor of c2";
-    }
-};
+}
 
 int main()
 {
-    C1 obj1;
-   
-    C1 obj2;
 
-    obj2 = obj1; //sets the number obj1 points to to object 2
 
-    obj2.p1 = new int;
+int arr[5] = {0, 1, 2, 3, 4};
 
-    *(obj2.p1) = 10; //sets object 2 pointer to 10
+f1(arr, 5, 0);
+//f2(arr, 5);
 
-    cout << (*obj1.p1); //object 1 will be 10 because of a previous assignmetn
-    //this is known as a shallow copy
 
-    return 0;
 }
