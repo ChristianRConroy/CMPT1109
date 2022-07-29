@@ -11,8 +11,8 @@ private:
     double c1, c2, c3;
 
     // dynamic array linked to pointer
-    double *work = new double[SIZE];
-    double *arr = new double[SIZE];
+    double *arr;
+    double *work;
 
 public:
     // default constructor
@@ -20,15 +20,17 @@ public:
     {
         c1 = 0, c2 = 0, c3 = 0;
         const int SIZE = 5;
-        // cleans the array
+        arr = new double[SIZE];
         for (int i = 0; i < SIZE; i++)
         {
             arr[i] = 0;
         }
     }
+
     // non-default constructor
     Polynomial(double c1, double c2, double c3)
     {
+        arr = new double[SIZE];
         arr[0] = c1;
         arr[1] = c2;
         arr[2] = c3;
@@ -44,6 +46,7 @@ public:
         }
     }
 
+    // operator overloading function
     void operator=(Polynomial x)
     {
 
@@ -54,20 +57,29 @@ public:
         }
     }
 
-    void add(Polynomial x[])
+    // addition function
+    void add(Polynomial arr[])
     {
 
-        for (int i = 0; i < SIZE; i++)
-        {
-        }
+
+            for(int i = 0; i < SIZE; i++)
+            {
+
+                work = this -> arr[i] + arr[i];
+
+            }
+       
+        
     }
+
+    // tester for now
     void printer()
     {
 
         cout << arr[0] << arr[1] << arr[2] << endl;
-        cout << c1 << c2 << c3 << endl;
     }
 
+    // destructor
     ~Polynomial()
     {
         // gets rid of the array
@@ -81,8 +93,8 @@ int main()
     Polynomial quadratic(1, 2, 0);
     Polynomial cubic(2, 3, 4);
 
-    cubic.printer();
-    quadratic.printer();
+    cubic.add(quadratic);
+    // quadratic.printer();
 
     return 0;
 }
