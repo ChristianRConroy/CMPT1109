@@ -284,6 +284,8 @@ int main()
     p2.print();
     p2 - 5;
     p2.print();
+    p2 * 5;
+    p2.print();
     cout << endl;
 
     // other function testers

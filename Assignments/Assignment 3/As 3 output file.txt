@@ -1,0 +1,17 @@
+6 + 8x^1 + 10x^2 + 12x^3
+1 + 2x^1 + 3x^2 + 4x^3
+5 + 12x^1 + 21x^2 + 32x^3
+
+25
+10
+0
+
+10 + 6x^1 + 7x^2 + 8x^3
+5 + 6x^1 + 7x^2 + 8x^3
+25 + 30x^1 + 35x^2 + 40x^3
+
+12
+2
+please chose which number you'd like to pluggin
+2
+349
