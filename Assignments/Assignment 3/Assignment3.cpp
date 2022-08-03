@@ -12,7 +12,7 @@ private:
     int y = 0;
 
     // allows const () poly operations
-    friend int operator+(int y, Polynomial x);
+    friend void operator+(int y, Polynomial x);
     friend int operator-(int y, Polynomial x);
     friend int operator*(int y, Polynomial x);
 
@@ -146,17 +146,21 @@ public:
 };
 
 // const + poly
-int operator+(int y, Polynomial x)
+void operator+(int y, Polynomial x)
 {
 
-    return y + x.arr[0];
+x.arr[0] = y + *x.arr[0];
+    
 }
+
 // const - poly
 int operator-(int y, Polynomial x)
 {
-
-    return y - x.arr[0];
+    int work = 0;
+    work = y - x.arr[0];
+    return 0;
 }
+
 // const * poly
 int operator*(int y, Polynomial x)
 {
@@ -175,11 +179,11 @@ int main()
     // quadratic.mult_Poly(cubic);
     // quadratic.mult_const(3);
 
-    cout << num + quadratic << endl;
-    cout << num - quadratic << endl;
-    cout << num * quadratic << endl;
+ num + quadratic;
+   // cout << num - quadratic << endl;
+   // cout << num * quadratic << endl;
 
-    // quadratic.print();
+    quadratic.print();
 
     return 0;
 }
