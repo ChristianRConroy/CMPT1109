@@ -12,7 +12,6 @@ private:
 
     // dynamic array linked to pointer
     double *arr;
-    double *work;
 
 public:
     // default constructor
@@ -58,22 +57,33 @@ public:
     }
 
     // addition function
-    void add(Polynomial arr[])
+    void add_Poly(Polynomial x)
     {
-
-
-            for(int i = 0; i < SIZE; i++)
-            {
-
-                work = this -> arr[i] + arr[i];
-
-            }
-       
-        
+        for (int i = 0; i < SIZE; i++)
+        {
+            arr[i] = arr[i] + x.arr[i];
+        }
     }
 
+    void sub_Poly(Polynomial x)
+    {
+        for (int i = 0; i < SIZE; i++)
+        {
+            arr[i] = arr[i] - x.arr[i];
+        }
+    }
+
+    void mult_Poly(Polynomial x)
+    {
+        for (int i = 0; i < SIZE; i++)
+        {
+            arr[i] = arr[i] * x.arr[i];
+        }
+    }
+
+
     // tester for now
-    void printer()
+    void print()
     {
 
         cout << arr[0] << arr[1] << arr[2] << endl;
@@ -84,7 +94,7 @@ public:
     {
         // gets rid of the array
         delete[] arr;
-        delete[] work;
+        // delete[] work;
     }
 };
 
@@ -93,8 +103,10 @@ int main()
     Polynomial quadratic(1, 2, 0);
     Polynomial cubic(2, 3, 4);
 
-    cubic.add(quadratic);
-    // quadratic.printer();
+    //quadratic.add_Poly(cubic);
+    //quadratic.sub_Poly(cubic);
+    //quadratic.mult_Poly(cubic);
 
+    quadratic.print();
     return 0;
 }
