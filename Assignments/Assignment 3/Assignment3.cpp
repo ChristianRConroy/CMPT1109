@@ -12,9 +12,9 @@ private:
     int y = 0;
 
     // allows const () poly operations
-    friend void operator+(int y, Polynomial x);
-    friend int operator-(int y, Polynomial x);
-    friend int operator*(int y, Polynomial x);
+    friend double operator+(int y, Polynomial x);
+    friend double operator-(int y, Polynomial x);
+    friend double operator*(int y, Polynomial x);
 
     // dynamic array linked to pointer
     double *arr;
@@ -126,6 +126,15 @@ public:
         }
     }
 
+    //*************************************************
+    // other functions
+
+    double getcoefficient(int index)
+    {
+
+        return arr[index];
+    }
+
     // tester for now
     void print()
     {
@@ -141,31 +150,37 @@ public:
     {
         // gets rid of the array
         delete[] arr;
-        // delete[] work;
     }
 };
 
 // const + poly
-void operator+(int y, Polynomial x)
+double operator+(int y, Polynomial x)
 {
 
-x.arr[0] = y + *x.arr[0];
-    
+    x.arr[0] = y + x.arr[0];
+    return *x.arr;
 }
 
 // const - poly
-int operator-(int y, Polynomial x)
+double operator-(int y, Polynomial x)
 {
-    int work = 0;
-    work = y - x.arr[0];
-    return 0;
+    x.arr[0] = y - x.arr[0];
+
+    for (int i = 1; i < 5; i++)
+    {
+
+        x.arr[i] = -1 * x.arr[i];
+    }
+
+    return *x.arr;
 }
 
 // const * poly
-int operator*(int y, Polynomial x)
+double operator*(int y, Polynomial x)
 {
 
-    return y * x.arr[0];
+    x.arr[0] = y * x.arr[0];
+    return *x.arr;
 }
 
 int main()
@@ -179,11 +194,12 @@ int main()
     // quadratic.mult_Poly(cubic);
     // quadratic.mult_const(3);
 
- num + quadratic;
-   // cout << num - quadratic << endl;
-   // cout << num * quadratic << endl;
+    //cout << num + quadratic << endl;
+    //cout << num - quadratic << endl;
+    //cout << num * quadratic << endl;
+    // cout << num - quadratic << endl;
+    // cout << num * quadratic << endl;
 
-    quadratic.print();
 
     return 0;
 }
