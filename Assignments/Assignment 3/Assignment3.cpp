@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -7,8 +8,9 @@ class Polynomial
 
 private:
     const int SIZE = 5;
-    double c1, c2, c3;
+    double c1, c2, c3, c4;
     int arithmetic = 0;
+    int num = 0;
     int y = 0;
 
     // allows const () poly operations
@@ -28,24 +30,34 @@ public:
     {
 
         int arithmetic = 0;
-        c1 = 0, c2 = 0, c3 = 0;
-        const int SIZE = 5;
+        c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+
+        cout << "please input the degree of the polynomial" << endl;
+        cin >> num;
+        const int SIZE = num;
         arr = new double[SIZE];
         for (int i = 0; i < SIZE; i++)
         {
             arr[i] = 0;
         }
+        cout << "please input the polynomials coefficients" << endl;
+        for (int i = 0; i < SIZE; i++)
+        {
+            cin >> arithmetic;
+            arr[i] = arithmetic;
+        }
     }
 
     // non-default constructor
-    Polynomial(double c1, double c2, double c3)
+    Polynomial(double c1, double c2, double c3, double c4)
     {
+        const int SIZE = 4;
         int arithmetic = 0;
         arr = new double[SIZE];
-        arr[0] = 1;
-        arr[1] = c1;
-        arr[2] = c2;
-        arr[3] = c3;
+        arr[0] = c1;
+        arr[1] = c2;
+        arr[2] = c3;
+        arr[3] = c4;
     }
 
     // copy constructor
@@ -148,10 +160,18 @@ public:
     }
 
     // evaluates polynomials
-    double eval(double num)
+    double eval()
     {
 
-        return 0;
+        cout << "please chose which number you'd like to pluggin" << endl;
+
+        cin >> num;
+
+        for(int i = 0; i < SIZE; i++)
+        {
+            arithmetic += arr[i]*pow(num, i);
+        }
+        return arithmetic;
     }
 
     // destructor
@@ -196,12 +216,10 @@ void operator*(int y, Polynomial x)
 int main()
 {
     int num = 5;
-    Polynomial quadratic(1, 2, 0);
-    Polynomial cubic(2, 3, 4);
+    Polynomial quadratic(1, 2, 0, 1);
+    Polynomial cubic(2, 3, 4, 1);
 
-    num + quadratic;
-    num - quadratic;
-    num *quadratic;
+    cout << quadratic.eval();
 
     return 0;
 }
