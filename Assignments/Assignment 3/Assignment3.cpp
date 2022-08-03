@@ -7,16 +7,16 @@ class Polynomial
 {
 
 private:
-    const int SIZE = 5;
+    int SIZE;
     double c1, c2, c3, c4;
-    int arithmetic = 0;
-    int num = 0;
-    int y = 0;
+    int arithmetic;
+    int num;
+    int y;
 
     // allows const () poly operations
-    friend void operator+(int y, Polynomial x);
-    friend void operator-(int y, Polynomial x);
-    friend void operator*(int y, Polynomial x);
+    friend double operator+(int y, Polynomial x);
+    friend double operator-(int y, Polynomial x);
+    friend double operator*(int y, Polynomial x);
 
     // dynamic array linked to pointer
     double *arr;
@@ -29,12 +29,11 @@ public:
     Polynomial()
     {
 
-        int arithmetic = 0;
-        c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+        arithmetic = 0, num = 0, c1 = 0, c2 = 0, c3 = 0, c4 = 0, SIZE = 10;
 
         cout << "please input the degree of the polynomial" << endl;
         cin >> num;
-        const int SIZE = num;
+        SIZE = num + 1;
         arr = new double[SIZE];
         for (int i = 0; i < SIZE; i++)
         {
@@ -51,8 +50,8 @@ public:
     // non-default constructor
     Polynomial(double c1, double c2, double c3, double c4)
     {
-        const int SIZE = 4;
-        int arithmetic = 0;
+        SIZE = 4;
+        arithmetic = 0;
         arr = new double[SIZE];
         arr[0] = c1;
         arr[1] = c2;
@@ -63,12 +62,58 @@ public:
     // copy constructor
     Polynomial(Polynomial &y)
     {
-        arr = new double[SIZE];
-        for (int i = 0; i < SIZE; i++)
+        arr = new double[10];
+        for (int i = 0; i < 10; i++)
         {
             this->arr[i] = y.arr[i];
         }
     }
+
+    //
+    void print()
+    {
+
+        for (int i = 0; i < SIZE; i++)
+        {
+            // makes the constant looks clean
+            if (i == 0)
+            {
+                cout << arr[i];
+            }
+            else
+                cout << arr[i] << "x^" << i;
+
+            // makes sure theres no extra plus hanging around
+            if (i != SIZE - 1)
+            {
+                cout << " + ";
+            }
+        }
+        cout << endl;
+    }
+
+        void printer(Polynomial &x)
+    {
+
+        for (int i = 0; i < SIZE; i++)
+        {
+            // makes the constant looks clean
+            if (i == 0)
+            {
+                cout << arr[i];
+            }
+            else
+                cout << arr[i] << "x^" << i;
+
+            // makes sure theres no extra plus hanging around
+            if (i != SIZE - 1)
+            {
+                cout << " + ";
+            }
+        }
+        cout << endl;
+    }
+
 
     // oo assignment operation
     void operator=(Polynomial x)
@@ -142,22 +187,21 @@ public:
     //*************************************************
     // other functions
 
-    double getcoefficient(int index)
+    // extracts a coefficient based on a specific index
+    double get_Coffee(int index)
     {
 
         return arr[index];
     }
 
-    // tester for now
-    void print()
+    // sets a coefficient when given a specific index and value
+    void set_Coffee(int index, double coffee)
     {
 
-        cout << arr[0] << endl;
-        cout << arr[1] << endl;
-        cout << arr[2] << endl;
-        cout << arr[3] << endl;
-        cout << endl;
+        arr[index] = coffee;
     }
+
+    // prints numbers
 
     // evaluates polynomials
     double eval()
@@ -167,9 +211,9 @@ public:
 
         cin >> num;
 
-        for(int i = 0; i < SIZE; i++)
+        for (int i = 0; i < SIZE; i++)
         {
-            arithmetic += arr[i]*pow(num, i);
+            arithmetic += arr[i] * pow(num, i);
         }
         return arithmetic;
     }
@@ -178,22 +222,23 @@ public:
     ~Polynomial()
     {
         // gets rid of the array
+
         delete[] arr;
     }
 };
 
 // const + poly
-void operator+(int y, Polynomial x)
+double operator+(int y, Polynomial x)
 {
 
     x.arr[0] = y + x.arr[0];
-
-    x.print();
+    return x.arr[0];
 }
 
 // const - poly
-void operator-(int y, Polynomial x)
+double operator-(int y, Polynomial x)
 {
+
     x.arr[0] = y - x.arr[0];
 
     for (int i = 1; i < 5; i++)
@@ -201,25 +246,52 @@ void operator-(int y, Polynomial x)
 
         x.arr[i] = -1 * x.arr[i];
     }
-
-    x.print();
+    return x.arr[0];
 }
 
 // const * poly
-void operator*(int y, Polynomial x)
+double operator*(int y, Polynomial x)
 {
 
     x.arr[0] = y * x.arr[0];
-    x.print();
+    return x.arr[0];
 }
 
 int main()
 {
-    int num = 5;
-    Polynomial quadratic(1, 2, 0, 1);
-    Polynomial cubic(2, 3, 4, 1);
 
-    cout << quadratic.eval();
+    Polynomial p1(1, 2, 3, 4);
+    Polynomial p2(5, 6, 7, 8);
+
+    // testers for rational operations
+    p1 + p2;
+    p1.print();
+    p1 - p2;
+    p1.print();
+    p1 *p2;
+    p1.print();
+    cout << endl;
+
+    // testers for const () rational operations
+    cout << 5 * p1 << endl;
+    cout << 5 + p1 << endl;
+    cout << 5 - p1 << endl;
+
+    cout << endl;
+
+    // testers for rational () const   operations
+    p2 + 5;
+    p2.print();
+    p2 - 5;
+    p2.print();
+    cout << endl;
+
+    // other function testers
+    cout << p1.get_Coffee(1) << endl;
+    p1.set_Coffee(1, 2);
+    cout << p1.get_Coffee(1) << endl;
+
+    cout << p1.eval() << endl;
 
     return 0;
 }
