@@ -9,16 +9,18 @@ private:
     const int SIZE = 5;
     double c1, c2, c3;
     int arithmetic = 0;
+    int y = 0;
 
-    friend void const_Plus_Poly(Polynomial x);
-    friend void const_Minus_Poly(Polynomial x);
-    friend void const_Mult_Poly(Polynomial x);
+    // allows const () poly operations
+    friend int operator+(int y, Polynomial x);
+    friend int operator-(int y, Polynomial x);
+    friend int operator*(int y, Polynomial x);
 
     // dynamic array linked to pointer
     double *arr;
 
 public:
-//*************************************************
+    //*************************************************
     // constructors
 
     // default constructor
@@ -55,10 +57,7 @@ public:
         }
     }
 
-//*************************************************
-    // addition overloading
-
-    // operator overloading function
+    // oo assignment operation
     void operator=(Polynomial x)
     {
 
@@ -69,7 +68,10 @@ public:
         }
     }
 
-    // o0 adding polynomials
+    //*************************************************
+    // addition overloading
+
+    // oo adding polynomials
     void operator+(Polynomial x)
     {
         for (int i = 0; i < SIZE; i++)
@@ -84,7 +86,7 @@ public:
         arr[0] = arr[0] + x;
     }
 
-//*************************************************
+    //*************************************************
     // subtraction overloading
 
     // oo subtracting polynomials
@@ -103,7 +105,7 @@ public:
         arr[0] = arr[0] - x;
     }
 
-//*************************************************
+    //*************************************************
     // multiplication overloading
 
     // oo mult polynomials
@@ -143,15 +145,23 @@ public:
     }
 };
 
-void const_Plus_Poly(Polynomial x)
+// const + poly
+int operator+(int y, Polynomial x)
 {
-}
 
-void const_Minus_Poly(Polynomial x)
-{
+    return y + x.arr[0];
 }
-void const_Mult_Poly(Polynomial x)
+// const - poly
+int operator-(int y, Polynomial x)
 {
+
+    return y - x.arr[0];
+}
+// const * poly
+int operator*(int y, Polynomial x)
+{
+
+    return y * x.arr[0];
 }
 
 int main()
@@ -165,8 +175,11 @@ int main()
     // quadratic.mult_Poly(cubic);
     // quadratic.mult_const(3);
 
-    quadratic * 4;
+    cout << num + quadratic << endl;
+    cout << num - quadratic << endl;
+    cout << num * quadratic << endl;
 
-    quadratic.print();
+    // quadratic.print();
+
     return 0;
 }
