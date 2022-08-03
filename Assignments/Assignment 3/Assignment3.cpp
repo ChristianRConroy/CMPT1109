@@ -12,9 +12,9 @@ private:
     int y = 0;
 
     // allows const () poly operations
-    friend double operator+(int y, Polynomial x);
-    friend double operator-(int y, Polynomial x);
-    friend double operator*(int y, Polynomial x);
+    friend void operator+(int y, Polynomial x);
+    friend void operator-(int y, Polynomial x);
+    friend void operator*(int y, Polynomial x);
 
     // dynamic array linked to pointer
     double *arr;
@@ -26,6 +26,7 @@ public:
     // default constructor
     Polynomial()
     {
+
         int arithmetic = 0;
         c1 = 0, c2 = 0, c3 = 0;
         const int SIZE = 5;
@@ -143,8 +144,14 @@ public:
         cout << arr[1] << endl;
         cout << arr[2] << endl;
         cout << arr[3] << endl;
+        cout << endl;
     }
 
+
+    double eval(double num){
+        
+        return 0;
+    }
     // destructor
     ~Polynomial()
     {
@@ -154,15 +161,17 @@ public:
 };
 
 // const + poly
-double operator+(int y, Polynomial x)
+void operator+(int y, Polynomial x)
 {
 
     x.arr[0] = y + x.arr[0];
-    return *x.arr;
+
+    x.print();
+    
 }
 
 // const - poly
-double operator-(int y, Polynomial x)
+void operator-(int y, Polynomial x)
 {
     x.arr[0] = y - x.arr[0];
 
@@ -172,15 +181,15 @@ double operator-(int y, Polynomial x)
         x.arr[i] = -1 * x.arr[i];
     }
 
-    return *x.arr;
+   x.print();
 }
 
 // const * poly
-double operator*(int y, Polynomial x)
+void operator*(int y, Polynomial x)
 {
 
     x.arr[0] = y * x.arr[0];
-    return *x.arr;
+    x.print();
 }
 
 int main()
@@ -189,16 +198,10 @@ int main()
     Polynomial quadratic(1, 2, 0);
     Polynomial cubic(2, 3, 4);
 
-    // quadratic.add_Poly(cubic);
-    // quadratic.sub_Poly(cubic);
-    // quadratic.mult_Poly(cubic);
-    // quadratic.mult_const(3);
-
-    //cout << num + quadratic << endl;
-    //cout << num - quadratic << endl;
-    //cout << num * quadratic << endl;
-    // cout << num - quadratic << endl;
-    // cout << num * quadratic << endl;
+    num + quadratic;
+    num - quadratic;
+    num * quadratic;
+    
 
 
     return 0;
