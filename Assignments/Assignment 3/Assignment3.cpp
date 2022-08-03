@@ -7,16 +7,24 @@ class Polynomial
 
 private:
     const int SIZE = 5;
-
     double c1, c2, c3;
+    int arithmetic = 0;
+
+    friend void const_Plus_Poly(Polynomial x);
+    friend void const_Minus_Poly(Polynomial x);
+    friend void const_Mult_Poly(Polynomial x);
 
     // dynamic array linked to pointer
     double *arr;
 
 public:
+//*************************************************
+    // constructors
+
     // default constructor
     Polynomial()
     {
+        int arithmetic = 0;
         c1 = 0, c2 = 0, c3 = 0;
         const int SIZE = 5;
         arr = new double[SIZE];
@@ -29,6 +37,7 @@ public:
     // non-default constructor
     Polynomial(double c1, double c2, double c3)
     {
+        int arithmetic = 0;
         arr = new double[SIZE];
         arr[0] = 1;
         arr[1] = c1;
@@ -46,6 +55,9 @@ public:
         }
     }
 
+//*************************************************
+    // addition overloading
+
     // operator overloading function
     void operator=(Polynomial x)
     {
@@ -57,8 +69,8 @@ public:
         }
     }
 
-    // addition function
-    void add_Poly(Polynomial x)
+    // o0 adding polynomials
+    void operator+(Polynomial x)
     {
         for (int i = 0; i < SIZE; i++)
         {
@@ -66,58 +78,62 @@ public:
         }
     }
 
-    // subtracts polynomials
-    void sub_Poly(Polynomial x)
+    // oo adding constants
+    void operator+(int x)
     {
+        arr[0] = arr[0] + x;
+    }
+
+//*************************************************
+    // subtraction overloading
+
+    // oo subtracting polynomials
+    void operator-(Polynomial x)
+    {
+
         for (int i = 0; i < SIZE; i++)
         {
             arr[i] = arr[i] - x.arr[i];
         }
     }
 
-    // multiplies coefficients, needs work
-    void mult_Poly(Polynomial x)
+    // 00 subtracting constants
+    void operator-(int x)
+    {
+        arr[0] = arr[0] - x;
+    }
+
+//*************************************************
+    // multiplication overloading
+
+    // oo mult polynomials
+    void operator*(Polynomial x)
     {
         for (int i = 0; i < SIZE; i++)
         {
             arr[i] = arr[i] * x.arr[i];
         }
     }
-    
-    //adds a constant to it
-    void add_const(int x)
-    {
-        arr[0] = arr[0] + x;
 
-    }
-    
-    //subtracts a constant
-    void sub_const(int x)
+    // multiply via a constant
+    void operator*(int x)
     {
-        arr[0] = arr[0] - x;
-
-    }
-
-    //multiply via a constant
-    void mult_const(int x)
-    {
-        for(int i = 0; i < SIZE; i++)
+        for (int i = 0; i < SIZE; i++)
         {
             arr[i] = arr[i] * x;
         }
-
     }
-    
+
     // tester for now
     void print()
     {
 
         cout << arr[0] << endl;
         cout << arr[1] << endl;
-        cout << arr[2] << endl; 
+        cout << arr[2] << endl;
         cout << arr[3] << endl;
     }
-    
+
     // destructor
     ~Polynomial()
     {
@@ -127,15 +143,29 @@ public:
     }
 };
 
+void const_Plus_Poly(Polynomial x)
+{
+}
+
+void const_Minus_Poly(Polynomial x)
+{
+}
+void const_Mult_Poly(Polynomial x)
+{
+}
+
 int main()
 {
+    int num = 5;
     Polynomial quadratic(1, 2, 0);
     Polynomial cubic(2, 3, 4);
 
     // quadratic.add_Poly(cubic);
     // quadratic.sub_Poly(cubic);
     // quadratic.mult_Poly(cubic);
-    quadratic.mult_const(3);
+    // quadratic.mult_const(3);
+
+    quadratic * 4;
 
     quadratic.print();
     return 0;
