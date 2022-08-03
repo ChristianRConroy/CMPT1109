@@ -147,11 +147,13 @@ public:
         cout << endl;
     }
 
+    // evaluates polynomials
+    double eval(double num)
+    {
 
-    double eval(double num){
-        
         return 0;
     }
+
     // destructor
     ~Polynomial()
     {
@@ -167,7 +169,6 @@ void operator+(int y, Polynomial x)
     x.arr[0] = y + x.arr[0];
 
     x.print();
-    
 }
 
 // const - poly
@@ -181,7 +182,7 @@ void operator-(int y, Polynomial x)
         x.arr[i] = -1 * x.arr[i];
     }
 
-   x.print();
+    x.print();
 }
 
 // const * poly
@@ -200,9 +201,7 @@ int main()
 
     num + quadratic;
     num - quadratic;
-    num * quadratic;
-    
-
+    num *quadratic;
 
     return 0;
 }
