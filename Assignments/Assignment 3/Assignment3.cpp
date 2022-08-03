@@ -7,6 +7,7 @@ class Polynomial
 {
 
 private:
+    bool flag;
     int SIZE;
     double c1, c2, c3, c4;
     int arithmetic;
@@ -50,9 +51,14 @@ public:
     // non-default constructor
     Polynomial(double c1, double c2, double c3, double c4)
     {
+        flag = false;
         SIZE = 4;
         arithmetic = 0;
-        arr = new double[SIZE];
+        arr = new double[20];
+        for (int i = 0; i < 20; i++)
+        {
+            arr[i] = 0;
+        }
         arr[0] = c1;
         arr[1] = c2;
         arr[2] = c3;
@@ -72,48 +78,54 @@ public:
     //
     void print()
     {
-
-        for (int i = 0; i < SIZE; i++)
+        if (flag == true)
         {
-            // makes the constant looks clean
-            if (i == 0)
+            for (int i = 0; i < 10; i++)
             {
-                cout << arr[i];
-            }
-            else
-                cout << arr[i] << "x^" << i;
+                // makes the constant looks clean
+                if (arr[i] != 0)
+                {
+                    if (i == 0)
+                    {
+                        cout << arr[i];
+                    }
+                    else
+                        cout << arr[i] << "x^" << i;
 
-            // makes sure theres no extra plus hanging around
-            if (i != SIZE - 1)
+                    // makes sure theres no extra plus hanging around
+                    if (i != 7 - 1)
+                    {
+                        cout << " + ";
+                    }
+                }
+            }
+            cout << endl;
+        }
+        else
+        {
+            for (int i = 0; i < SIZE; i++)
             {
-                cout << " + ";
+                // makes the constant looks clean
+                if (arr[i] != 0)
+                {
+                    if (i == 0)
+                    {
+                        cout << arr[i];
+                    }
+                    else
+                        cout << arr[i] << "x^" << i;
+
+                    // makes sure theres no extra plus hanging around
+                    if (i != SIZE - 1)
+                    {
+                        cout << " + ";
+                    }
+                }
             }
         }
         cout << endl;
+        flag = false;
     }
-
-        void printer(Polynomial &x)
-    {
-
-        for (int i = 0; i < SIZE; i++)
-        {
-            // makes the constant looks clean
-            if (i == 0)
-            {
-                cout << arr[i];
-            }
-            else
-                cout << arr[i] << "x^" << i;
-
-            // makes sure theres no extra plus hanging around
-            if (i != SIZE - 1)
-            {
-                cout << " + ";
-            }
-        }
-        cout << endl;
-    }
-
 
     // oo assignment operation
     void operator=(Polynomial x)
@@ -169,9 +181,14 @@ public:
     // oo mult polynomials
     void operator*(Polynomial x)
     {
+        flag = true;
+
         for (int i = 0; i < SIZE; i++)
         {
-            arr[i] = arr[i] * x.arr[i];
+            for (int j = 0; j < SIZE; j++)
+            {
+                arr[i + j] += arr[i] * x.arr[j];
+            }
         }
     }
 
@@ -260,8 +277,9 @@ double operator*(int y, Polynomial x)
 int main()
 {
 
-    Polynomial p1(1, 2, 3, 4);
-    Polynomial p2(5, 6, 7, 8);
+    Polynomial p1(1, 1, 1, 1);
+    Polynomial p2(1, 1, 1, 1);
+    // Polynomial p3;
 
     // testers for rational operations
     p1 + p2;
@@ -277,7 +295,7 @@ int main()
     cout << 5 + p1 << endl;
     cout << 5 - p1 << endl;
 
-    cout << endl;
+     cout << endl;
 
     // testers for rational () const   operations
     p2 + 5;
